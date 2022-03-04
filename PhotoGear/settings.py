@@ -25,7 +25,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-k@n84@ee2@x67pxomr%&hwjcdp_*5!f4%5qfxhj8&9n+&nm6t+'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['128.199.181.20']
 
@@ -107,16 +107,23 @@ WSGI_APPLICATION = 'PhotoGear.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
-
-DATABASES = {
+if DEBUG :
+    DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'PhotoGear',
-        'USER': 'postgres',
-        'PASSWORD': 'admin'
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': 'mydatabase',
     }
-
 }
+else :
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql',
+            'NAME': 'PhotoGear',
+            'USER': 'nineh',
+            'PASSWORD': '0000'
+        }
+
+    }
 
 
 # Password validation
